@@ -35,10 +35,11 @@ Adjust the version of each library considering the settings (such as GPU).
 
 ### Dataset
 
-------- |
-[CIFAR-10](https://www.cs.toronto.edu/~kriz/cifar.html) |
-[CIFAR-100](https://www.cs.toronto.edu/~kriz/cifar.html) |
-[STL-10](https://cs.stanford.edu/~acoates/stl10/) |
+Dataset | Link
+------- | -------
+CIFAR-10 | [link](https://www.cs.toronto.edu/~kriz/cifar.html)
+CIFAR-100 | [link](https://www.cs.toronto.edu/~kriz/cifar.html)
+STL-10 | [link](https://cs.stanford.edu/~acoates/stl10/)
 
 You can download the dataset (CIFAR-10, CIFAR-100, and STL-10) through the code of torchvision.
 
