@@ -2,6 +2,7 @@
 
 This repository contains the official implementation of "[DAFA: Distance-Aware Fair Adversarial Training](https://openreview.net/pdf?id=BRdEBlwUW6)" published at ICLR 2024.
 
+
 ![intro fig](./figs/fig_intro.jpg)
 
 ## Abstract
@@ -24,6 +25,32 @@ indicating a marked improvement in robust fairness compared to existing methods.
 ## Getting Started
 
 ### Prerequisites
+
+* python 3.8.18
+* pytorch 1.6.0
+* torchvision 0.7.0
+* numpy 1.24.3
+
+### Dataset
+
+You can download the dataset (CIFAR-10, CIFAR-100, and STL-10) through the code of torchvision.
+
+## Training
+
+```
+bash scripts/trades_dafa.sh # for our method
+
+bash scripts/trades.sh # for baseline
+```
+
+### Pre-trained Models
+
+You can download pretrained models trained using our method.
+Dataset | Model
+------- | -----
+CIFAR-10| [cifar-10.ckpt]()
+CIFAR-100| [cifar-100.ckpt]()
+STL-10| [stl-10.ckpt]()
 
 Specify any prerequisites or dependencies needed to run the code.
 
