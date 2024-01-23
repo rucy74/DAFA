@@ -35,7 +35,6 @@ Adjust the version of each library considering the settings (such as GPU).
 
 ### Dataset
 
-Dataset |
 ------- |
 [CIFAR-10](https://www.cs.toronto.edu/~kriz/cifar.html) |
 [CIFAR-100](https://www.cs.toronto.edu/~kriz/cifar.html) |
