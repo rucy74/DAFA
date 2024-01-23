@@ -31,6 +31,8 @@ indicating a marked improvement in robust fairness compared to existing methods.
 * torchvision 0.7.0
 * numpy 1.24.3
 
+Adjust the version of each library considering the settings (such as GPU).
+
 ### Dataset
 
 You can download the dataset (CIFAR-10, CIFAR-100, and STL-10) through the code of torchvision.
