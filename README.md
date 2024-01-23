@@ -38,9 +38,9 @@ You can download the dataset (CIFAR-10, CIFAR-100, and STL-10) through the code 
 ### Training
 
 ```
-bash scripts/trades_dafa.sh # for our method
+bash scripts/trades_dafa.sh     # for our method
 
-bash scripts/trades.sh # for baseline
+bash scripts/trades.sh          # for baseline
 
 Arguments:
   --model_dir                         Directory of model for saving checkpoint
@@ -51,6 +51,16 @@ Arguments:
   --dafa_warmup                       warmup epochs for dafa
   --dafa_lambda                       the value of hyperparmater lambda of dafa
 ```
+
+### Evaluation
+```
+bash scripts/evaluation.sh
+
+Before executing the code, correct the path of the evaluation checkpoint
+After executing the code, see the PGD evaluation results through model-dir/eval_epochwise.npy
+```
+
+For autoattack evaluation, please refer to [AutoAttack](https://github.com/fra31/auto-attack) or [Adaptive AutoAttack](https://github.com/eth-sri/adaptive-auto-attack).
 
 ### Pre-trained Models
 
