@@ -89,7 +89,7 @@ Additionally, we conducted an analysis to confirm the correlation between class-
 
 Motivated by the above analyses, we proposed Distance-Aware Fair Adversarial Training (DAFA), which incorporates class-wise distance to bolster robust fairness.  
   
-![method fig algorithm](./figs/fig_algorithm.png)
+![method fig algorithm](./figs/fig_algorithms.png)
 
 ### Results  
 
