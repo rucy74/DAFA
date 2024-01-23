@@ -32,16 +32,13 @@ def get_args():
                              'https://pytorch.org/docs/stable/notes/randomness.html')
 
     parser.add_argument('--batch_size', type=int, default=128, metavar='N', help='Input batch size for training (default: 128)')
-    parser.add_argument('--test_batch_size', type=int, default=200, metavar='N', help='Input batch size for testing (default: 128)')
-    parser.add_argument('--epochs', type=int, default=110, metavar='N', help='Number of epochs to train. '
-                             'Note: we arbitrarily define an epoch as a pass '
-                             'through 50K datapoints. This is convenient for '
-                             'comparison with standard CIFAR-10 training '
-                             'configurations.')
+    parser.add_argument('--test_batch_size', type=int, default=200, metavar='N', help='Input batch size for testing (default: 200)')
+    parser.add_argument('--epochs', type=int, default=110, metavar='N', help='Number of epochs to train. ')
+
     # Eval config
     parser.add_argument('--eval_freq', default=10, type=int, help='Eval frequency (in epochs)')
     parser.add_argument('--save_start', default=10, type=int, help='Eval frequency (in epochs)')
-    parser.add_argument('--save_all', action='store_true', default=False, help='Adds the extra SVHN data')
+    parser.add_argument('--save_all', action='store_true', default=False, help='save all epoch checkpoints option')
 
     # Optimizer config
     parser.add_argument('--weight_decay', '--wd', default=5e-4, type=float)
@@ -51,26 +48,25 @@ def get_args():
                         help='Learning rate schedule')
     parser.add_argument('--momentum', type=float, default=0.9, metavar='M', help='SGD momentum')
     parser.add_argument('--nesterov', action='store_true', default=False, help='Use extragrdient steps')
-    parser.add_argument('--early_stop', action='store_true', default=False, help='Use extragrdient steps')
 
     # Adversarial / stability training config
     parser.add_argument('--loss', default='trades', type=str,
                         choices=('trades', 'pgd'),
-                        help='Which loss to use: TRADES-like KL regularization or noise augmentation')
-    parser.add_argument('--epsilon', default=0.031, type=float, help='Adversarial perturbation size (takes the role of sigma for stability training)')
-    parser.add_argument('--test_epsilon', default=0.031, type=float, help='Adversarial perturbation size (takes the role of sigma for stability training)')
+                        help='Which loss to use: TRADES or PGD')
+    parser.add_argument('--epsilon', default=0.031, type=float, help='Adversarial perturbation size')
+    parser.add_argument('--test_epsilon', default=0.031, type=float, help='Adversarial perturbation size')
 
     parser.add_argument('--pgd_num_steps', default=10, type=int, help='number of pgd steps in adversarial training')
     parser.add_argument('--pgd_step_size', default=0.007, help='pgd steps size in adversarial training', type=float)
     parser.add_argument('--test_pgd_num_steps', default=20, type=int, help='number of pgd steps in adversarial training')
     parser.add_argument('--test_pgd_step_size', default=0.003, help='pgd steps size in adversarial training', type=float)
-    parser.add_argument('--beta', default=6.0, type=float, help='stability regularization, i.e., 1/lambda in TRADES')     
+    parser.add_argument('--beta', default=6.0, type=float, help='1/lambda in TRADES')     
 
     # DAFA argument
-    parser.add_argument('--rob_fairness_algorithm', default='dafa', type=str, 
-                        choices=('dafa', 'none'))
-    parser.add_argument('--dafa_warmup', default=70, type=int, help='number of pgd steps in adversarial training')
-    parser.add_argument('--dafa_lambda', default=1.0, help='pgd steps size in adversarial training', type=float)
+    parser.add_argument('--rob_fairness_algorithm', default='dafa', type=str, choices=('dafa', 'none'), 
+                        help='use or not to use dafa')
+    parser.add_argument('--dafa_warmup', default=70, type=int, help='number of epochs before applying dafa in adversarial training')
+    parser.add_argument('--dafa_lambda', default=1.0, help='scale of dafa', type=float)
 
 
     args = parser.parse_args()
