@@ -35,12 +35,21 @@ indicating a marked improvement in robust fairness compared to existing methods.
 
 You can download the dataset (CIFAR-10, CIFAR-100, and STL-10) through the code of torchvision.
 
-## Training
+### Training
 
 ```
 bash scripts/trades_dafa.sh # for our method
 
 bash scripts/trades.sh # for baseline
+
+Arguments:
+  --model_dir                         Directory of model for saving checkpoint
+  --dataset                           The dataset to use for training
+  --model                             Name of the model architecture
+  --loss                              Which loss to use, choices=(trades, pgd)
+  --rob_fairness_algorithm            robust fairness algorithms, choices=(dafa, none)
+  --dafa_warmup                       warmup epochs for dafa
+  --dafa_lambda                       the value of hyperparmater lambda of dafa
 ```
 
 ### Pre-trained Models
