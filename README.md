@@ -1,7 +1,7 @@
 # DAFA: Distance-Aware Fair Adversarial Training
 
 This repository contains the official implementation of "[DAFA: Distance-Aware Fair Adversarial Training](https://openreview.net/pdf?id=BRdEBlwUW6)" published at ICLR 2024.
-![intro fig](.figs/fig_intro.jpg)
+![intro fig](./figs/fig_intro.jpg)
 
 ## Abstract
 
