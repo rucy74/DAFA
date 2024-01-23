@@ -77,8 +77,10 @@ STL-10| [stl-10.ckpt](https://drive.google.com/file/d/1Jv3mOmx-MFOq4yy2e0GBLR36I
 
 Our study is motivated by the observation that the prediction of the hard class is mostly misclassified as the similar class. We initially conducted an analysis of the effect of inter-class similarity in a classification task. The figure below represents the results of two 5-class classification tasks: on the left, Cat and four other animal classes, and on the right, Cat and four other non-animal classes. The results indicate that the cat class data results in the worst class accuracy on the left; however, the same cat data results in the best class accuracy on the right. This indicates that inter-class similarity plays an important role in determining the difficulty of the class in a classification task.  
 
+
+
   
-![method fig cat](./figs/fig_method_cat.png)
+![method fig cat](./figs/fig_method_cat.png){: width="1000" height="200"}
 
 Additionally, we conducted an analysis to confirm the correlation between class-wise similarity (distance) and class-wise accuracy. As can be seen in the left figure below, a clear correlation between the two is observed. Furthermore, we conducted experiments to examine the correlation with the existing class difficulty indicator, class-wise variance. As evident in the left figure below, unlike class-wise distance, a clear correlation cannot be observed.  
 
