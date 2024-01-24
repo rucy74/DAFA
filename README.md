@@ -103,5 +103,3 @@ Motivated by the above analyses, we proposed Distance-Aware Fair Adversarial Tra
 
   
 ![result fig](./figs/fig_results.png)
-
-## Reference
