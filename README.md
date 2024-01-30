@@ -103,3 +103,14 @@ Motivated by the above analyses, we proposed Distance-Aware Fair Adversarial Tra
 
   
 ![result fig](./figs/fig_results.png)
+
+### Reference
+
+@inproceedings{
+anonymous2024dafa,
+title={{DAFA}: Distance-Aware Fair Adversarial Training},
+author={Anonymous},
+booktitle={The Twelfth International Conference on Learning Representations},
+year={2024},
+url={https://openreview.net/forum?id=BRdEBlwUW6}
+}
