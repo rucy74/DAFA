@@ -58,20 +58,14 @@ def trades_loss(model, x_natural, y, optimizer, args, class_weights, batch_indic
     x_adv = Variable(x_adv, requires_grad=False)
 
     model.train()
-
-    # zero gradient
     optimizer.zero_grad()
 
     logits = model(x_adv)
     logits_nat = model(x_natural)
-
-    ## Cross Entropy loss for clean data
     
     loss_natural = (torch.nn.CrossEntropyLoss(reduction='none')(logits_nat, y) * class_weights_mask).mean()
     loss_dict['natural'] = loss_natural.item()
-
-    ## robust loss
-
+    
     p_natural = F.softmax(logits_nat, dim=1)
     loss_robust = criterion_kl(F.log_softmax(logits, dim=1), p_natural) / batch_size
 
@@ -122,8 +116,6 @@ def madry_loss(model, x_natural, y, optimizer, args, class_weights, batch_indice
     optimizer.zero_grad()
 
     logits = model(x_adv)
-
-    
     
     loss_robust = (torch.nn.CrossEntropyLoss(reduction='none')(logits, y) * class_weights_mask).mean()
     loss = loss_robust

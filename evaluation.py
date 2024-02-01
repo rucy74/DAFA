@@ -150,7 +150,8 @@ def eval_classwise(model, test_loader, args):
     pgd_acc_classwise = cur_pgd_correct_classwise / (total / args.n_class)    
     
     overall_results = np.array({'clean_acc':clean_acc, 'pgd_acc':pgd_acc,
-                                'clean_acc_classwise':clean_acc_classwise, 'pgd_acc_classwise':pgd_acc_classwise,
+                                'clean_acc_classwise':clean_acc_classwise, 
+                                'pgd_acc_classwise':pgd_acc_classwise,
                                 })
 
     np.save(os.path.join("/".join(args.model_dir.split("/")[:-1]), 'eval_epochwise.npy'), overall_results)

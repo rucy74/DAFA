@@ -94,8 +94,8 @@ class CustomDataset(Dataset):
 
     def __repr__(self):
         fmt_str = 'Semisupervised Dataset ' + self.__class__.__name__ + '\n'
-        fmt_str += '    Number of datapoints: {}\n'.format(self.__len__())
-        fmt_str += '    Root Location: {}\n'.format(self.dataset.root)
+        fmt_str += '  Number of datapoints: {}\n'.format(self.__len__())
+        fmt_str += '  Root Location: {}\n'.format(self.dataset.root)
         tmp = '    Transforms (if any): '
         fmt_str += '{0}{1}\n'.format(tmp, self.dataset.transform.__repr__().replace('\n', '\n' + ' ' * len(tmp)))
         tmp = '    Target Transforms (if any): '

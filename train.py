@@ -85,7 +85,7 @@ def train(args, model, device, optimizer, train_loader, epoch, class_weights):
 
     model.train()
 
-    # save probability for calculating class similarity
+    # save probability for calculating class similarity (dafa)
     if args.rob_fairness_algorithm == 'dafa' and epoch == args.dafa_warmup:
         memory_dict = {'probs':np.zeros((len(trainset), args.n_class)), 
                        'labels':np.zeros(len(trainset))}

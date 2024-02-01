@@ -14,7 +14,7 @@ def get_args():
     # Model config
     parser.add_argument('--model', '-m', default='wrn-28-10', type=str, choices=('resnet', 'pre-resnet','wrn-28-10'),
                         help='Name of the model (see utils.get_model)')
-    parser.add_argument('--model_dir', default='./rst-model',
+    parser.add_argument('--model_dir', default='./models',
                         help='Directory of model for saving checkpoint')
     parser.add_argument('--overwrite', action='store_true', default=False,
                         help='Cancels the run if an appropriate checkpoint is found')
@@ -26,11 +26,7 @@ def get_args():
     parser.add_argument('--save_freq', default=10, type=int, help='Checkpoint save frequency (in epochs)')
 
     # Generic training configs
-    parser.add_argument('--seed', type=int, default=1, help='Random seed. '
-                             'Note: fixing the random seed does not give complete '
-                             'reproducibility. See '
-                             'https://pytorch.org/docs/stable/notes/randomness.html')
-
+    parser.add_argument('--seed', type=int, default=1, help='Random seed. ')
     parser.add_argument('--batch_size', type=int, default=128, metavar='N', help='Input batch size for training (default: 128)')
     parser.add_argument('--test_batch_size', type=int, default=200, metavar='N', help='Input batch size for testing (default: 200)')
     parser.add_argument('--epochs', type=int, default=110, metavar='N', help='Number of epochs to train. ')
@@ -66,7 +62,7 @@ def get_args():
     parser.add_argument('--rob_fairness_algorithm', default='dafa', type=str, choices=('dafa', 'none'), 
                         help='use or not to use dafa')
     parser.add_argument('--dafa_warmup', default=70, type=int, help='number of epochs before applying dafa in adversarial training')
-    parser.add_argument('--dafa_lambda', default=1.0, help='scale of dafa', type=float)
+    parser.add_argument('--dafa_lambda', default=1.0, help='scale of dafa (cifar10: 1.0, cifar100: 1.5, stl10: 1.5)', type=float)
 
 
     args = parser.parse_args()
