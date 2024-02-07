@@ -22,6 +22,7 @@ def get_transform(dataset='cifar10', train=True):
             ])
 
     elif dataset == 'stl10':
+        # STL dataset is resized to (64, 64)
         transform_train = transforms.Compose([
             transforms.Resize(64),
             transforms.RandomCrop(64, padding=4),

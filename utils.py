@@ -6,6 +6,8 @@ import numpy as np
 import torch.nn as nn
 
 def get_model(args):
+    
+    # STL dataset is resized to (64, 64) -> 512*4
 
     name = args.model
     num_classes = args.n_class

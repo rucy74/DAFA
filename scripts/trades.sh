@@ -1,4 +1,4 @@
-model_dir=../model-cifar10/trades_baseline
+model_dir=../model-cifar10/trades
 CUDA_VISIBLE_DEVICES=7 python train.py \
     --model_dir=$model_dir \
     --dataset cifar10 \
