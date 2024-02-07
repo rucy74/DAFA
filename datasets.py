@@ -65,9 +65,9 @@ class CustomDataset(Dataset):
         logger = logging.getLogger()
 
         if train:
-            logger.info("Training set")
+            logger.info("Train")
         else:
-            logger.info("Test set")
+            logger.info("Test")
         logger.info("Number of training samples: %d", len(self.targets))
         logger.info("Label (and pseudo-label) histogram: %s",
                     tuple(

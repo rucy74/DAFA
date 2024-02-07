@@ -50,6 +50,8 @@ def trades_loss(model, x_natural, y, optimizer, args, class_weights, batch_indic
         grad = torch.autograd.grad(loss_kl, [x_adv])[0]
         
         x_adv = x_adv.detach() + (class_weights_mask * step_size).view(-1, 1, 1, 1)  * torch.sign(grad.detach())
+        # class weights applied    
+        # class weights = 1.0 during warm-up and calculated values after the warm-up
         x_adv = torch.min(torch.max(x_adv, x_natural - (class_weights_mask * epsilon).view(-1, 1, 1, 1)) , 
                                            x_natural + (class_weights_mask * epsilon).view(-1, 1, 1, 1))        
        
@@ -62,7 +64,8 @@ def trades_loss(model, x_natural, y, optimizer, args, class_weights, batch_indic
 
     logits = model(x_adv)
     logits_nat = model(x_natural)
-    
+
+    # class weights applied    
     loss_natural = (torch.nn.CrossEntropyLoss(reduction='none')(logits_nat, y) * class_weights_mask).mean()
     loss_dict['natural'] = loss_natural.item()
     
@@ -72,6 +75,7 @@ def trades_loss(model, x_natural, y, optimizer, args, class_weights, batch_indic
     loss_dict['robust'] = loss_robust.item()
     loss = loss_natural + beta * loss_robust
 
+    # save the statistics for calculating class weights, at the end of the warmup epoch
     if memory_dict is not None:
         memory_dict['probs'][batch_indices] = F.softmax(logits, dim=1).detach().cpu().numpy()
         memory_dict['labels'][batch_indices] = y.detach().cpu().numpy()

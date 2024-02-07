@@ -86,6 +86,7 @@ def train(args, model, device, optimizer, train_loader, epoch, class_weights):
     model.train()
 
     # save probability for calculating class similarity (dafa)
+    # only save the train statistics at the end of the warmup epoch
     if args.rob_fairness_algorithm == 'dafa' and epoch == args.dafa_warmup:
         memory_dict = {'probs':np.zeros((len(trainset), args.n_class)), 
                        'labels':np.zeros(len(trainset))}
@@ -152,7 +153,7 @@ def adjust_learning_rate(optimizer, epoch, lr=None):
             lr = args.lr * 0.01
         if epoch >= args.epochs:
             lr = args.lr * 0.001
-    elif schedule == 'bag_of_tricks':
+    elif schedule == 'bag_of_tricks': ## our default lr scheduling
         if epoch >= args.epochs - 10:
             lr = args.lr * 0.1
         if epoch >= args.epochs - 5:
@@ -200,6 +201,7 @@ def main():
                               nesterov=args.nesterov)
     
     # DAFA class weights, initialized as all-one
+    # calculated through memory_dict below, which are calculated only at the end of the warm-up epoch (e.g. 70)
     class_weights = torch.ones(args.n_class).cuda()
 
     init_time = time.time()
@@ -212,6 +214,7 @@ def main():
 
         # adversarial training        
         
+        # memory_dict = None, except the case (using DAFA and at the end of the warm-up epoch (e.g. 70))
         memory_dict = train(args, model, device, optimizer, train_loader, epoch, class_weights)
         
         # evaluation on natural examples
