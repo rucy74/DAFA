@@ -48,6 +48,6 @@ def calculate_class_weights(memory_dict, lamb=1.0):
             if class_similarity[i, i] < class_similarity[j, j]:                
                 class_weights[i] += lamb * class_similarity[i, j] * class_similarity[j, j]                
             else:
-                class_weights[i] -= lamb * class_similarity[i, j] * class_similarity[j, j]
+                class_weights[i] -= lamb * class_similarity[j, i] * class_similarity[i, i]
 
     return class_weights
